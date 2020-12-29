@@ -1,25 +1,23 @@
 let count = 0;
 const value = document.getElementById('value');
-const decrease = document.querySelector('.decrease');
-const reset = document.querySelector('.reset');
-const increase = document.querySelector('.increase');
+const btns = document.querySelectorAll('.btn');
 
 
-decrease.addEventListener("click", () => {
-  count--;
-  valueColorNText();
-});
-reset.addEventListener("click", () => {
-  count = 0;
-  valueColorNText();
-});
-increase.addEventListener("click", () => {
-  count++;
-  valueColorNText();
+btns.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    if (btn.classList.contains('decrease')) {
+      count--;
+    } else if (btn.classList.contains('increase')) {
+      count++;
+    } else {
+      count = 0;
+    }
+    valueTextNColor();
+  });
 });
 
 
-function valueColorNText() {
+function valueTextNColor() {
   value.textContent = count;
   if (count < 0) {
     value.style.color = 'red';
